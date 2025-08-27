@@ -1,0 +1,24 @@
+{
+  "name": "sistem-pakar-prediksi-kejahatan",
+  "version": "1.0.0",
+  "description": "Sistem pakar untuk prediksi tingkat kejahatan dengan analisis wilayah POLDA",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server ."
+  },
+  "keywords": [
+    "sistem-pakar",
+    "prediksi-kejahatan",
+    "polda",
+    "analisis-data",
+    "javascript",
+    "chartjs"
+  ],
+  "author": "Developer Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0",
+    "live-server": "^1.2.2"
+  }
+}
