@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Prediksi Tingkat Kejahatan - Dengan Analisis Peta POLDA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header Section -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <!-- Gambar dihapus karena file tidak ditemukan -->
+                    <h1 class="text-2xl md:text-3xl font-bold">Sistem Pakar Prediksi Kejahatan</h1>
+                </div>
+                <nav class="flex space-x-4">
+                    <a href="#input" class="px-3 py-2 rounded hover:bg-white/20 transition">Input Data</a>
+                    <a href="#analysis" class="px-3 py-2 rounded hover:bg-white/20 transition">Analisis</a>
+                    <a href="#polda" class="px-3 py-2 rounded hover:bg-white/20 transition">Peta POLDA</a>
+                    <a href="#prediction" class="px-3 py-2 rounded hover:bg-white/20 transition">Prediksi</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Sistem Prediksi Kejahatan Berbasis Wilayah</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+                Sistem pakar canggih untuk menganalisis dan memprediksi tingkat kejahatan berdasarkan data historis 
+                dengan analisis wilayah POLDA yang komprehensif.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card rounded-lg p-6 card-hover">
+                    <div class="text-blue-500 text-3xl mb-3">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Analisis Data</h3>
+                    <p class="text-gray-600">Analisis pola kejahatan multi-wilayah</p>
+                </div>
+                <div class="stat-card rounded-lg p-6 card-hover">
+                    <div class="text-green-500 text-3xl mb-3">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Peta POLDA</h3>
+                    <p class="text-gray-600">Visualisasi data per wilayah kepolisian</p>
+                </div>
+                <div class="stat-card rounded-lg p-6 card-hover">
+                    <div class="text-purple-500 text-3xl mb-3">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Prediksi AI</h3>
+                    <p class="text-gray-600">Algoritma prediktif canggih</p>
+                </div>
+                <div class="stat-card rounded-lg p-6 card-hover">
+                    <div class="text-red-500 text-3xl mb-3">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="font-semibold text-lg mb-2">Peringatan Dini</h3>
+                    <p class="text-gray-600">Sistem peringatan berbasis wilayah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Input Data Section -->
+    <section id="input" class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Input Data Historis Kejahatan</h2>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold mb-4">Tambah Data Kejahatan</h3>
+                <form id="crimeDataForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Wilayah POLDA</label>
+                        <select id="poldaRegion" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="polda-metro-jaya">Polda Metro Jaya</option>
+                            <option value="polda-jawa-barat">Polda Jawa Barat</option>
+                            <option value="polda-jawa-tengah">Polda Jawa Tengah</option>
+                            <option value="polda-jawa-timur">Polda Jawa Timur</option>
+                            <option value="polda-sumatera-utara">Polda Sumatera Utara</option>
+                            <option value="polda-sumatera-selatan">Polda Sumatera Selatan</option>
+                            <option value="polda-bali">Polda Bali</option>
+                            <option value="polda-kalimantan-barat">Polda Kalimantan Barat</option>
+                            <option value="polda-sulawesi-selatan">Polda Sulawesi Selatan</option>
+                            <option value="polda-aceh">Polda Aceh</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tahun</label>
+                        <select id="year" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Bulan</label>
+                        <select id="month" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="1">Januari</option>
+                            <option value="2">Februari</option>
+                            <option value="3">Maret</option>
+                            <option value="4">April</option>
+                            <option value="5">Mei</option>
+                            <option value="6">Juni</option>
+                            <option value="7">Juli</option>
+                            <option value="8">Agustus</option>
+                            <option value="9">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Desember</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Jumlah Kejahatan</label>
+                        <input type="number" id="crimeCount" min="0" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="0">
+                    </div>
+                </form>
+                <button onclick="addData()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md transition">
+                    <i class="fas fa-plus mr-2"></i>Tambah Data
+                </button>
+            </div>
+
+            <!-- Sample Data -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Data Sample (Opsional untuk Testing)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <button onclick="loadSampleDataYearly()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition">
+                        <i class="fas fa-database mr-2"></i>Data Tahunan Sample
+                    </button>
+                    <button onclick="loadSampleDataMonthly()" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition">
+                        <i class="fas fa-calendar mr-2"></i>Data Bulanan Sample
+                    </button>
+                    <button onclick="loadSamplePoldaData()" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md transition">
+                        <i class="fas fa-map mr-2"></i>Data POLDA Sample
+                    </button>
+                </div>
+                <p class="text-sm text-gray-600">
+                    Gunakan data sample untuk mencoba sistem prediksi tanpa harus memasukkan data manual.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Table Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Data Kejahatan Terekam</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">POLDA</th>
+                            <th class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tahun</th>
+                            <th class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bulan</th>
+                            <th class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
+                            <th class="px-6 py-3 border-b border-gray-200 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crimeDataTable" class="divide-y divide-gray-200">
+                        <!-- Data akan diisi oleh JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="emptyDataMessage" class="text-center py-8 text-gray-500">
+                <i class="fas fa-database text-4xl mb-4"></i>
+                <p>Belum ada data kejahatan. Silakan tambahkan data melalui form di atas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Section -->
+    <section id="analysis" class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Analisis Data Kejahatan</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Statistik Data</h3>
+                    <div id="statsContainer" class="space-y-3">
+                        <div class="flex justify-between">
+                            <span>Total Data:</span>
+                            <span class="font-semibold" id="totalData">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Jumlah Wilayah:</span>
+                            <span class="font-semibold" id="totalRegions">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Rata-rata Bulanan:</span>
+                            <span class="font-semibold" id="monthlyAvg">0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Tren Terakhir:</span>
+                            <span class="font-semibold" id="trend">Stabil</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Visualisasi Data</h3>
+                    <div class="h-64">
+                        <canvas id="crimeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peta POLDA Section -->
+    <section id="polda" class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Peta Analisis Wilayah POLDA</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Peta Sebaran Kejahatan</h3>
+                    <div class="relative">
+                        <img src="assets/images/indonesia-map.png" alt="Peta Indonesia dengan pembagian wilayah POLDA berwarna berdasarkan tingkat kejahatan" class="w-full h-64 object-contain" />
+                        <div id="poldaHotspots" class="absolute inset-0">
+                            <!-- Hotspot markers akan diisi oleh JavaScript -->
+                        </div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 gap-2">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-green-400 mr-2 rounded"></div>
+                            <span class="text-xs">Rendah (0-50)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-yellow-400 mr-2 rounded"></div>
+                            <span class="text-xs">Sedang (51-100)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-orange-400 mr-2 rounded"></div>
+                            <span class="text-xs">Tinggi (101-200)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-red-500 mr-2 rounded"></div>
+                            <span class="text-xs">Sangat Tinggi (>200)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Analisis Per Wilayah POLDA</h3>
+                    <div class="h-64">
+                        <canvas id="poldaChart"></canvas>
+                    </div>
+                    <div class="mt-4">
+                        <select id="poldaFilter" onchange="updatePoldaAnalysis()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Semua Wilayah</option>
+                            <option value="polda-metro-jaya">Polda Metro Jaya</option>
+                            <option value="polda-jawa-barat">Polda Jawa Barat</option>
+                            <option value="polda-jawa-tengah">Polda Jawa Tengah</option>
+                            <option value="polda-jawa-timur">Polda Jawa Timur</option>
+                            <option value="polda-sumatera-utara">Polda Sumatera Utara</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Ranking Wilayah Berdasarkan Tingkat Kejahatan</h3>
+                <div id="poldaRanking" class="space-y-2">
+                    <!-- Ranking akan diisi oleh JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Section -->
+    <section id="prediction" class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center">Prediksi Tingkat Kejahatan</h2>
+            
+            <div class="text-center mb-8">
+                <button onclick="calculatePrediction()" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-md text-lg font-semibold transition">
+                    <i class="fas fa-calculator mr-2"></i>Hitung Prediksi
+                </button>
+            </div>
+            
+            <div id="predictionResult" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="prediction-high rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Prediksi Tinggi</h3>
+                        <p class="text-3xl font-bold mb-2" id="highPrediction">0</p>
+                        <p class="text-sm">Kasus per bulan</p>
+                    </div>
+                    <div class="prediction-medium rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Prediksi Sedang</h3>
+                        <p class="text-3xl font-bold mb-2" id="mediumPrediction">0</p>
+                        <p class="text-sm">Kasus rata-rata</p>
+                    </div>
+                    <div class="prediction-low rounded-lg p-6 text-center">
+                        <h3 class="text-xl font-semibold mb-2">Prediksi Rendah</h3>
+                        <p class="text-3xl font-bold mb-2" id="lowPrediction">0</p>
+                        <p class="text-sm">Kasus optimal</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Prediksi Per Wilayah</h3>
+                    <div class="h-64">
+                        <canvas id="regionalPredictionChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Rekomendasi Pencegahan Berbasis Wilayah</h3>
+                    <div id="regionalRecommendations" class="prose">
+                        <!-- Rekomendasi akan diisi oleh JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-semibold mb-4">Grafik Prediksi</h3>
+                    <div class="h-64">
+                        <canvas id="predictionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="noDataMessage" class="text-center py-8 text-gray-500 bg-yellow-50 rounded-lg">
+                <i class="fas fa-exclamation-triangle text-3xl mb-4"></i>
+                <p class="text-lg mb-2">Data belum cukup untuk melakukan prediksi</p>
+                <p>Silakan tambahkan minimal data dari 3 wilayah POLDA untuk mendapatkan prediksi yang akurat.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Sistem Pakar Prediksi Tingkat Kejahatan. All rights reserved.</p>
+            <p class="text-sm opacity-75 mt-2">Dikembangkan untuk keperluan akademik dan penelitian</p>
+        </div>
+    </footer>
+
+    <script src="Script.js"></script>
+</body>
+</html>
