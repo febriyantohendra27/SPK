@@ -1,6 +1,0 @@
-<!-- Placeholder untuk peta Indonesia -->
-<div class="map-container">
-    <img src="https://placehold.co/800x600/3B82F6/FFFFFF/png?text=Peta+Indonesia+POLDA" 
-         alt="Peta Indonesia dengan pembagian wilayah kepolisian daerah (POLDA) berwarna biru dengan marker lokasi" 
-         class="w-full h-auto">
-</div>
